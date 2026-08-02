@@ -1,0 +1,223 @@
+---
+import { projects } from '../data/site';
+
+const featured = projects.filter((p) => p.featured);
+const others = projects.filter((p) => !p.featured);
+---
+
+<section id="projects" class="section">
+  <div class="container">
+    <h2 class="section-head reveal">
+      <span class="prompt">$</span>
+      <span class="num">03.</span>
+      projects
+    </h2>
+
+    <!-- Main projects -->
+    <div class="projects-grid">
+      {
+        featured.map((p, i) => (
+          <article class="card reveal" data-delay={i % 2}>
+            <div class="card-top">
+              <span class="card-folder" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z" />
+                </svg>
+              </span>
+              <div class="card-links">
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${p.name} on GitHub`}
+                  title="GitHub"
+                >
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z" />
+                  </svg>
+                </a>
+                {p.live && (
+                  <a
+                    href={p.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${p.name} live site`}
+                    title="Live site"
+                  >
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                      <polyline points="15 3 21 3 21 9" />
+                      <line x1="10" y1="14" x2="21" y2="3" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+
+            <h3 class="card-title">
+              <a href={p.live ?? p.github} target="_blank" rel="noopener noreferrer">
+                {p.name}
+              </a>
+            </h3>
+            <p class="card-desc">{p.description}</p>
+
+            <div class="card-stack mono">
+              {p.stack.map((s) => (
+                <span>{s}</span>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <!-- Divider -->
+    <div class="divider reveal">
+      <span class="divider-line"></span>
+      <span class="divider-label mono">// other pet-projects</span>
+      <span class="divider-line"></span>
+    </div>
+
+    <!-- Other projects -->
+    <div class="projects-grid">
+      {
+        others.map((p, i) => (
+          <article class="card card-other reveal" data-delay={i % 2}>
+            <div class="card-top">
+              <span class="card-folder" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                  <path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z" />
+                </svg>
+              </span>
+              <div class="card-links">
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${p.name} on GitHub`}
+                  title="GitHub"
+                >
+                  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1a9.4 9.4 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="card-title">
+              <a href={p.github} target="_blank" rel="noopener noreferrer">
+                {p.name}
+              </a>
+            </h3>
+            <p class="card-desc">{p.description}</p>
+
+            <div class="card-stack mono">
+              {p.stack.map((s) => (
+                <span>{s}</span>
+              ))}
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s var(--ease);
+  }
+  .card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+  }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+  .card-folder {
+    color: var(--accent);
+    display: inline-flex;
+  }
+  .card-links {
+    display: flex;
+    gap: 0.9rem;
+  }
+  .card-links a {
+    color: var(--text-dim);
+    display: inline-flex;
+    transition: color 0.2s var(--ease);
+  }
+  .card-links a:hover {
+    color: var(--accent);
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+  .card-title a {
+    color: var(--text);
+  }
+  .card-title a:hover {
+    color: var(--accent);
+  }
+
+  .card-desc {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    flex: 1;
+  }
+
+  .card-stack {
+    margin-top: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+
+  /* Divider */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0 1.5rem;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .divider-label {
+    color: var(--text-faint);
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  /* Other projects slightly dimmer */
+  .card-other {
+    opacity: 0.92;
+  }
+  .card-other .card-folder {
+    color: var(--text-faint);
+  }
+</style>

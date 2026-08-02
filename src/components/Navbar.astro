@@ -1,0 +1,84 @@
+---
+import { profile } from '../data/site';
+
+const links = [
+  { href: '#about', label: 'about' },
+  { href: '#experience', label: 'experience' },
+  { href: '#projects', label: 'projects' },
+  { href: '#contact', label: 'contact' },
+];
+---
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="nav-logo mono" aria-label="Home">
+      <span class="prompt">~/</span>{profile.handle}
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      {
+        links.map((l) => (
+          <a href={l.href} class="nav-link mono">
+            <span class="prompt">./</span>{l.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10, 14, 13, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .nav-logo {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .nav-logo .prompt {
+    color: var(--accent);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .nav-link {
+    font-size: 0.82rem;
+    color: var(--text-dim);
+  }
+  .nav-link .prompt {
+    color: var(--text-faint);
+    transition: color 0.2s var(--ease);
+  }
+  .nav-link:hover {
+    color: var(--accent);
+  }
+  .nav-link:hover .prompt {
+    color: var(--accent);
+  }
+
+  @media (max-width: 560px) {
+    .nav-links {
+      gap: 0.9rem;
+    }
+    .nav-link {
+      font-size: 0.75rem;
+    }
+  }
+</style>

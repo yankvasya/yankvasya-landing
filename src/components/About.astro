@@ -1,0 +1,79 @@
+---
+import { profile } from '../data/site';
+---
+
+<section id="about" class="section">
+  <div class="container">
+    <h2 class="section-head reveal">
+      <span class="prompt">$</span>
+      <span class="num">01.</span>
+      about
+    </h2>
+
+    <div class="about-body reveal" data-delay="1">
+      {
+        profile.bio.map((p) => (
+          <p class="about-p">{p}</p>
+        ))
+      }
+    </div>
+
+    <div class="about-stack reveal" data-delay="2">
+      <p class="stack-label mono">// tech I work with</p>
+      <ul class="stack-list mono">
+        <li>Vue 2 / 3</li>
+        <li>TypeScript</li>
+        <li>Nuxt</li>
+        <li>Pinia / Vuex</li>
+        <li>Tailwind CSS</li>
+        <li>Vite</li>
+        <li>Astro</li>
+        <li>Vitest</li>
+        <li>Storybook</li>
+        <li>Node.js</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-body {
+    max-width: 40rem;
+  }
+  .about-p {
+    color: var(--text-dim);
+    margin-bottom: 1rem;
+  }
+  .about-p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-stack {
+    margin-top: 2.5rem;
+  }
+  .stack-label {
+    color: var(--text-faint);
+    font-size: 0.82rem;
+    margin-bottom: 1rem;
+  }
+  .stack-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .stack-list li {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.35rem 0.75rem;
+    transition: all 0.2s var(--ease);
+  }
+  .stack-list li:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+</style>
