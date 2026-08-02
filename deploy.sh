@@ -21,5 +21,11 @@ cd ~/projects/yankvasya-landing
 npm ci
 npm run build
 
-# Caddy serves the site directly from ~/projects/yankvasya-landing/dist
+# Caddy (snap) is sandboxed and can't read ~/projects/... directly, so copy
+# the built output into the snap's accessible site root.
+SNAP_SITE=/var/snap/caddy/common/sites/yankvasya-landing
+mkdir -p "$SNAP_SITE"
+cp -r dist/* "$SNAP_SITE/"
+
 echo "Deploy complete: yankvasya.dev"
+
