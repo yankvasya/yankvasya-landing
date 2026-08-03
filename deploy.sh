@@ -27,5 +27,16 @@ SNAP_SITE=/var/snap/caddy/common/sites/yankvasya-landing
 mkdir -p "$SNAP_SITE"
 cp -r dist/* "$SNAP_SITE/"
 
+# Install the Caddyfile (caching/compression/security headers) if it changed.
+# The snap Caddyfile lives at /etc/caddy/Caddyfile (or wherever your snap
+# config is mounted). Adjust the path to match your setup.
+CADDY_CONFIG=/etc/caddy/Caddyfile
+if [ -f Caddyfile ]; then
+  cp Caddyfile "$CADDY_CONFIG"
+  # Reload Caddy so the new config takes effect.
+  systemctl reload caddy 2>/dev/null || caddy reload --config "$CADDY_CONFIG" 2>/dev/null || true
+fi
+
 echo "Deploy complete: yankvasya.dev"
+
 
