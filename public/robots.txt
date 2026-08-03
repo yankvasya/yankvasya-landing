@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yankvasya.dev/sitemap-index.xml

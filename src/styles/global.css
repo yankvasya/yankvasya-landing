@@ -12,7 +12,10 @@
   --border-strong: #2c3a35;
   --text: #d6e2dc;
   --text-dim: #8ba096;
-  --text-faint: #5c6f66;
+  /* #70847b = 4.88:1 on --bg (#0a0e0d), 4.52:1 on --bg-card (#121816),
+     passes WCAG AA 4.5:1 on all surfaces. Previous #5c6f66 was 3.63:1. */
+  --text-faint: #70847b;
+
   --accent: #4ade80;
   --accent-dim: #22c55e;
   --accent-glow: rgba(74, 222, 128, 0.15);
