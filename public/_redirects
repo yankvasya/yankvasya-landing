@@ -1,5 +1,5 @@
 # Cloudflare Pages redirects config.
-# Defensive rule: guarantee /robots.txt always resolves to the static file
-# in the build output (never falls through to the SPA/HTML fallback).
-# The 200 status keeps it a rewrite, not a redirect.
-/robots.txt  /robots.txt  200
+# NOTE: No rule for /robots.txt here. The static file in the build output is
+# served directly by Cloudflare Pages. A self-referencing rewrite
+# (/robots.txt -> /robots.txt) can loop and cause "unable to download
+# robots.txt". Rely on _headers for the correct Content-Type instead.
