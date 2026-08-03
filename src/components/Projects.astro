@@ -213,11 +213,20 @@ const others = projects.filter((p) => !p.featured);
     white-space: nowrap;
   }
 
-  /* Other projects slightly dimmer */
+  /* Other projects: previously used opacity: 0.92, which dimmed the whole
+     card and dropped the tag text below WCAG AA (4.03:1). Removed the
+     opacity so the tags keep full contrast. Use a subtle border tint
+     instead to visually differentiate "other" projects. */
   .card-other {
-    opacity: 0.92;
+    border-color: var(--border);
   }
   .card-other .card-folder {
     color: var(--text-faint);
   }
+  /* Explicitly ensure tag text meets 4.5:1 on the card background.
+     #70847b = 4.56:1 on #111715 / #121816. */
+  .card-other .card-stack {
+    color: var(--text-faint);
+  }
+
 </style>
