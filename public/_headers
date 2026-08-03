@@ -1,6 +1,6 @@
 # Cloudflare Pages headers config.
 # Forces the correct Content-Type for robots.txt and sitemap files so they
-# are never served as HTML. Also adds long-lived caching for hashed assets.
+# are never served as HTML. Adds long-lived caching for hashed assets.
 
 /robots.txt
   Content-Type: text/plain; charset=utf-8
