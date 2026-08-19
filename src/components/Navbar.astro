@@ -49,6 +49,7 @@ const links = [
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text);
+    white-space: nowrap;
   }
   .nav-logo .prompt {
     color: var(--accent);
@@ -56,12 +57,14 @@ const links = [
 
   .nav-links {
     display: flex;
+    align-items: center;
     gap: 1.25rem;
   }
 
   .nav-link {
     font-size: 0.82rem;
     color: var(--text-dim);
+    white-space: nowrap;
   }
   .nav-link .prompt {
     color: var(--text-faint);
@@ -74,12 +77,42 @@ const links = [
     color: var(--accent);
   }
 
-  @media (max-width: 560px) {
+  /* Tablet / small screens: tighten spacing */
+  @media (max-width: 640px) {
     .nav-links {
       gap: 0.9rem;
     }
     .nav-link {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
+    }
+  }
+
+  /* Mobile: hide the "./" prefixes so the links fit on one line */
+  @media (max-width: 480px) {
+    .nav-link .prompt {
+      display: none;
+    }
+    .nav-links {
+      gap: 0.85rem;
+    }
+    .nav-link {
+      font-size: 0.78rem;
+    }
+  }
+
+  /* Very narrow screens: shrink the logo prefix and tighten further */
+  @media (max-width: 360px) {
+    .nav-logo {
+      font-size: 0.85rem;
+    }
+    .nav-logo .prompt {
+      display: none;
+    }
+    .nav-links {
+      gap: 0.7rem;
+    }
+    .nav-link {
+      font-size: 0.74rem;
     }
   }
 </style>
